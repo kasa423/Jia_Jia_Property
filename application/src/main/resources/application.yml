@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://116.205.136.30:33306/spring_security_demo?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=false
+    username: root
+    password: "AJDIOFsadfH3ewEIOrUwwY28(*&^*sdafDAFAQq"
+
+  redis:
+    database: 2
+    host: 116.205.136.30
+    port: 6379
+    password: "*&tbguat65R&R^&76hdsfisy85&^%&$f29r67"
+
+
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+  mapper-locations:
+    - classpath*:mapper/*.xml
+
+  type-aliases-package: com.fetch.*.domain
