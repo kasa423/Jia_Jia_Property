@@ -11,11 +11,6 @@
     <description>系统模块</description>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-            <version>3.2.1</version>
-        </dependency>
 
         <!-- 暂时存放，可能会移植到根目录下 -->
         <!-- begin -->

@@ -1,4 +1,4 @@
-package com.fetch.system.domain;
+package com.fetch.common.core.domain;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import org.springframework.security.core.GrantedAuthority;

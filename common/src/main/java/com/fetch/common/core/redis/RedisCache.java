@@ -1,4 +1,4 @@
-package com.fetch.common.utils;
+package com.fetch.common.core.redis;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

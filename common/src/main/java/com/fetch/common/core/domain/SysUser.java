@@ -1,4 +1,4 @@
-package com.fetch.system.domain;
+package com.fetch.common.core.domain;
 
 
 /**
