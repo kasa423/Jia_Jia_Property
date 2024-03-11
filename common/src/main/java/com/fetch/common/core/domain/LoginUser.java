@@ -1,6 +1,9 @@
 package com.fetch.common.core.domain;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,6 +19,10 @@ import java.util.stream.Collectors;
  * @date 2024/02/29 11:52
  * @description: TODO
  */
+
+@Getter
+@Setter
+@NoArgsConstructor
 public class LoginUser implements UserDetails {
 
     private SysUser user;
@@ -29,10 +36,6 @@ public class LoginUser implements UserDetails {
         this.user = user;
         this.permissions = permission;
     }
-
-    public LoginUser() {
-    }
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -34,6 +34,12 @@ public class Result<D> {
         this.message = message;
     }
 
+    public Result<D> success() {
+        this.code = 200;
+        this.message = "操作成功";
+        return this;
+    }
+
     public Result<D> success(D data) {
         this.data = data;
         return this;
