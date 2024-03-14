@@ -6,7 +6,7 @@ package com.fetch.common.exception;
  * @description: TODO
  * @date 2024/3/7 15:25
  */
-public class IllegalParameterException extends RuntimeException{
+public class IllegalParameterException extends RuntimeException {
 
     public IllegalParameterException(String message) {
         super(message);
@@ -16,7 +16,7 @@ public class IllegalParameterException extends RuntimeException{
         super(message, cause);
     }
 
-    public IllegalParameterException(Throwable cause){
+    public IllegalParameterException(Throwable cause) {
         super(cause);
     }
 }

@@ -17,4 +17,6 @@ public interface IUserLoginService {
      * @return
      */
     Result<Object> login(SysUser user);
+
+    Result<Object> logout();
 }

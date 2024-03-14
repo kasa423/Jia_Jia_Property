@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -21,7 +22,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * @author jiang chen\
+ * @author jiang chen
  * @version 1.0
  * @description: TODO
  * @date 2024/3/11 9:54
@@ -62,5 +63,19 @@ public class UserLoginServiceImpl implements IUserLoginService {
         }
         // 失败，未知异常
         return result.failed("登录失败，未知异常");
+    }
+
+    @Override
+    public Result<Object> logout() {
+        Result<Object> result = new Result<>();
+        try {
+            Authentication authentication = (Authentication) SecurityContextHolder.getContext().getAuthentication();
+            LoginUser loginUser= (LoginUser) authentication.getPrincipal();
+            String id = loginUser.getUser().getId().toString();
+            redisCache.deleteObject(RedisKeyConstants.USER_LOGIN_KEY+id);
+            return result.success();
+        }catch (Exception e){
+            return result.failed("退出登录失败");
+        }
     }
 }

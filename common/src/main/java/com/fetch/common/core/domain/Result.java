@@ -1,12 +1,16 @@
 package com.fetch.common.core.domain;
 
+import java.io.Serializable;
+
 /**
  * @author jiang chen
  * @version 1.0
  * @description: TODO
  * @date 2024/3/10 20:56
  */
-public class Result<D> {
+public class Result<D> implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private Integer code;
 
@@ -48,6 +52,12 @@ public class Result<D> {
     public Result<D> success(D data, String message) {
         this.data = data;
         this.message = message;
+        return this;
+    }
+
+    public Result<D> failed() {
+        this.code = 500;
+        this.message = "操作失败";
         return this;
     }
 

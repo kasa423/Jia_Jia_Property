@@ -26,6 +26,6 @@ public class AuthenticationEntryPointImpl implements AuthenticationEntryPoint {
         // 认证失败
         Result<Object> unauthorized = new Result<>(HttpStatus.UNAUTHORIZED.value(), "认证失败");
         String json = JSON.toJSONString(unauthorized);
-        WebUtils.renderString(response,json);
+        WebUtils.renderString(response, json);
     }
 }

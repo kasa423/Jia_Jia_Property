@@ -15,6 +15,8 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
 
-    SysUser selectUserByUsername(SysUser user);
+    SysUser selectUserByUsername(String username);
+
+    List<String> selectRolePermissionByUserId(Long userId);
 
 }

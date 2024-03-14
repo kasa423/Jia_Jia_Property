@@ -1,4 +1,4 @@
-package com.fetch.common.Enum;
+package com.fetch.common.enums;
 
 /**
  * @author jiang chen

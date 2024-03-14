@@ -1,9 +1,12 @@
 package com.fetch.web.controller;
 
 import com.fetch.common.core.domain.Result;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.fetch.common.core.domain.SysUser;
+import com.fetch.common.core.service.impl.UserLoginServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 
 /**
  * @author jiang chen
@@ -12,11 +15,24 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2024/3/11 9:23
  */
 @RestController
-@RequestMapping("/login")
+@RequestMapping("/verify")
 public class LoginController {
 
-    @PostMapping("")
-    public Result<Object> login(String username, String password){
-        retrun user
+    @Autowired
+    private UserLoginServiceImpl loginService;
+
+    @ResponseBody
+    @PostMapping("/login")
+    public Result<Object> login(@RequestBody SysUser user) {
+        System.out.println("123466");
+        System.out.println(user.getUserName());
+        System.out.println(user.getPassword());
+        return loginService.login(user);
+    }
+
+    @ResponseBody
+    @GetMapping("logout")
+    public Result<Object> logout() {
+        return loginService.logout();
     }
 }

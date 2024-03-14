@@ -12,7 +12,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Date;
 import java.util.Objects;
-import java.util.UUID;
 
 /**
  * @author jiang chen
@@ -65,26 +64,26 @@ public class JwtUtils {
     }
 
     public static String refreshToken(String token, long ttlMillis) {
-        if (token == null || token.isEmpty()){
+        if (token == null || token.isEmpty()) {
             throw new IllegalParameterException("token不能为空");
         }
         Claims claims = JwtUtils.parseJWT(token);
-        if (claims.getExpiration().before(new Date())){
-            return JwtUtils.createJWT(claims.getSubject(),claims.getId(), ttlMillis);
+        if (claims.getExpiration().before(new Date())) {
+            return JwtUtils.createJWT(claims.getSubject(), claims.getId(), ttlMillis);
         }
         return token;
     }
 
-    public String verifyJwt(LoginUser loginUser, String token){
+    public String verifyJwt(LoginUser loginUser, String token) {
 
-        if (Objects.isNull(loginUser)|| token == null || token.isEmpty()){
+        if (Objects.isNull(loginUser) || token == null || token.isEmpty()) {
             return null;
         }
         Claims claims = parseJWT(token);
         Long expirationTime = claims.getExpiration().getTime();
         Long currentTime = System.currentTimeMillis();
-        if (expirationTime - currentTime <= 1000*60*5){
-            return createJWT(claims.getSubject(),claims.getId(),expirationTime);
+        if (expirationTime - currentTime <= 1000 * 60 * 5) {
+            return createJWT(claims.getSubject(), claims.getId(), expirationTime);
         }
         return null;
     }
