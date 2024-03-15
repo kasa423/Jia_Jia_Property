@@ -1,5 +1,8 @@
 package com.fetch.common.core.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
 
 /**
@@ -8,6 +11,8 @@ import java.io.Serializable;
  * @description: TODO
  * @date 2024/3/10 20:56
  */
+@Getter
+@Setter
 public class Result<D> implements Serializable {
 
     private static final long serialVersionUID = 1L;

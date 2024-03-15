@@ -69,7 +69,7 @@ public class UserLoginServiceImpl implements IUserLoginService {
     public Result<Object> logout() {
         Result<Object> result = new Result<>();
         try {
-            Authentication authentication = (Authentication) SecurityContextHolder.getContext().getAuthentication();
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             LoginUser loginUser= (LoginUser) authentication.getPrincipal();
             String id = loginUser.getUser().getId().toString();
             redisCache.deleteObject(RedisKeyConstants.USER_LOGIN_KEY+id);

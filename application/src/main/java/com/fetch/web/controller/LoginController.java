@@ -24,9 +24,6 @@ public class LoginController {
     @ResponseBody
     @PostMapping("/login")
     public Result<Object> login(@RequestBody SysUser user) {
-        System.out.println("123466");
-        System.out.println(user.getUserName());
-        System.out.println(user.getPassword());
         return loginService.login(user);
     }
 
@@ -35,4 +32,5 @@ public class LoginController {
     public Result<Object> logout() {
         return loginService.logout();
     }
+
 }
