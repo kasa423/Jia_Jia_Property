@@ -65,7 +65,7 @@ public class RedisCache {
         return redisTemplate.expire(key, timeout, timeUnit);
     }
 
-    public <T> T getCacheObject(final String key) {
+    public <T> T  getCacheObject(final String key) {
         ValueOperations<String, T> operations = redisTemplate.opsForValue();
         return operations.get(key);
     }

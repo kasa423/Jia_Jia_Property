@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @date 2024/02/29 16:05
  * @description: TODO
  */
-@SpringBootApplication(exclude = {org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class})
+@SpringBootApplication
 @ComponentScan("com.fetch.**")
 @MapperScan({"com.fetch.**.mapper"})
 public class FetchApplication {

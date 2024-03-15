@@ -1,5 +1,6 @@
 package com.fetch.common.core.service.impl;
 
+import com.fetch.common.core.domain.LoginUser;
 import com.fetch.common.core.domain.SysUser;
 import com.fetch.common.core.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +29,10 @@ public class UserDetailServiceImpl implements UserDetailsService {
         // 查询用户信息
         SysUser sysUser = userMapper.selectUserByUsername(username);
         if (Objects.isNull(sysUser)) {
-            throw new UsernameNotFoundException("用户名或密码错误");
+            throw new UsernameNotFoundException("用户不存在");
         }
+        System.out.println(sysUser);
         List<String> roles = userMapper.selectRolePermissionByUserId(sysUser.getId());
-        return null;
+        return new LoginUser(sysUser, null);
     }
 }

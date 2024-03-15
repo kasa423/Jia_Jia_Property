@@ -50,6 +50,8 @@ public class Result<D> implements Serializable {
     }
 
     public Result<D> success(D data) {
+        this.code = 200;
+        this.message = "操作成功";
         this.data = data;
         return this;
     }

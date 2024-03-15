@@ -1,5 +1,7 @@
 package com.fetch.common.filter;
 
+import com.alibaba.fastjson.parser.ParserConfig;
+import com.fetch.common.constants.RedisKeyConstants;
 import com.fetch.common.core.domain.LoginUser;
 import com.fetch.common.core.redis.RedisCache;
 import com.fetch.common.utils.JwtUtils;
@@ -44,9 +46,9 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             throw new RuntimeException("token 过期");
         }
 
-        String redisKey = "login:" + userId;
+        String redisKey = RedisKeyConstants.USER_LOGIN_KEY + userId;
         // 从redis 中获取用户信息
-        LoginUser loginUser = redisCache.getCacheObject(redisKey);
+        LoginUser loginUser = (LoginUser) redisCache.getCacheObject(redisKey);
         if (Objects.isNull(loginUser)) {
             throw new RuntimeException("用户未登录");
         }

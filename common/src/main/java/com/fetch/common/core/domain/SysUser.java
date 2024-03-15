@@ -1,10 +1,7 @@
 package com.fetch.common.core.domain;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 
@@ -12,10 +9,9 @@ import java.io.Serializable;
  * @author Administrator
  */
 
-@Getter
-@Setter
-@NoArgsConstructor
+@Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class SysUser implements Serializable {
 
     private Long id;

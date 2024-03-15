@@ -42,12 +42,12 @@ public class UserLoginServiceImpl implements IUserLoginService {
         Result<Object> result = new Result<>();
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(user.getUserName(), user.getPassword());
-        Authentication authentication = null;
+        Authentication authentication;
         try {
             authentication = authenticationManager.authenticate(authenticationToken);
         }catch(Exception e){
             // 认证失败
-            result.failed(HttpStatus.UNAUTHORIZED.value(),"账户或密码有误");
+            result.failed(HttpStatus.UNAUTHORIZED.value(),e.getMessage());
             return result;
         }
         if (!Objects.isNull(authentication)){
@@ -55,9 +55,9 @@ public class UserLoginServiceImpl implements IUserLoginService {
             LoginUser loginUser = (LoginUser) authentication.getPrincipal();
             String userId = loginUser.getUser().getId().toString();
             String username = loginUser.getUsername();
-            String token = JwtUtils.createJWT(userId, username,null);
+            String token = JwtUtils.createJWT(username,userId,null);
             Map<String, String> map = new HashMap<>(1);
-            map.put(RedisKeyConstants.USER_LOGIN_KEY, token);
+            map.put("token", token);
             redisCache.setCacheObject(RedisKeyConstants.USER_LOGIN_KEY+userId, loginUser);
             return result.success(map);
         }
@@ -75,7 +75,8 @@ public class UserLoginServiceImpl implements IUserLoginService {
             redisCache.deleteObject(RedisKeyConstants.USER_LOGIN_KEY+id);
             return result.success();
         }catch (Exception e){
-            return result.failed("退出登录失败");
+            System.out.println(e.getMessage());
+            return result.failed("退出失败");
         }
     }
 }

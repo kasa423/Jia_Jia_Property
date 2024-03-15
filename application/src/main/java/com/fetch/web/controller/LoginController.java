@@ -28,9 +28,14 @@ public class LoginController {
     }
 
     @ResponseBody
-    @GetMapping("logout")
+    @GetMapping("/logout")
     public Result<Object> logout() {
         return loginService.logout();
+    }
+
+    @GetMapping("/hello")
+    public Result<String> hello() {
+        return new Result<String>().success("hello");
     }
 
 }

@@ -1,6 +1,7 @@
 package com.fetch.common.core.domain;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,8 +21,7 @@ import java.util.stream.Collectors;
  * @description: TODO
  */
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 public class LoginUser implements UserDetails {
 
