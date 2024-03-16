@@ -21,10 +21,14 @@ Spring:
     port: 6379
     password: "*&tbguat65R&R^&76hdsfisy85&^%&$f29r67"
 
+# 日志配置
+logging:
+  config: classpath:logback.xml
+  level:
+    com.fetch: debug
+    org.springframework: warn
 
 mybatis:
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapperLocations: classpath*:mapper/*.xml
   typeAliasesPackage: com.fetch.**.domain
   configLocation: classpath:mybatis/mybatis-config.xml
@@ -32,3 +36,6 @@ mybatis:
 spring:
   profiles:
     active: druid
+  main:
+    log-startup-info: true
+    log-for-missing-config: true

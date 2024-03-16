@@ -31,7 +31,6 @@ public class UserDetailServiceImpl implements UserDetailsService {
         if (Objects.isNull(sysUser)) {
             throw new UsernameNotFoundException("用户不存在");
         }
-        System.out.println(sysUser);
         List<String> roles = userMapper.selectRolePermissionByUserId(sysUser.getId());
         return new LoginUser(sysUser, null);
     }
