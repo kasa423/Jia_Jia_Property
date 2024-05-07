@@ -6,7 +6,7 @@ import com.fetch.common.core.service.impl.UserLoginServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * @author jiang chen
@@ -18,24 +18,24 @@ import javax.annotation.Resource;
 @RequestMapping("/verify")
 public class LoginController {
 
+
+    private final AtomicReference<UserLoginServiceImpl> loginService = new AtomicReference<>();
+
     @Autowired
-    private UserLoginServiceImpl loginService;
+    public LoginController(UserLoginServiceImpl loginService) {
+        this.loginService.set(loginService);
+    }
 
     @ResponseBody
     @PostMapping("/login")
     public Result<Object> login(@RequestBody SysUser user) {
-        return loginService.login(user);
+        return loginService.get().login(user);
     }
 
     @ResponseBody
     @GetMapping("/logout")
     public Result<Object> logout() {
-        return loginService.logout();
-    }
-
-    @GetMapping("/hello")
-    public Result<String> hello() {
-        return new Result<String>().success("hello");
+        return loginService.get().logout();
     }
 
 }
