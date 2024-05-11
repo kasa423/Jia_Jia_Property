@@ -74,9 +74,8 @@ public class Result<D> implements Serializable {
         return this;
     }
 
-    public Result<D> failed(Integer code, String message) {
+    public void failed(Integer code, String message) {
         this.code = code;
         this.message = message;
-        return this;
     }
 }

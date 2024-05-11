@@ -28,6 +28,12 @@
             <groupId>com.fetch</groupId>
             <artifactId>system</artifactId>
             <version>1.0.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.fetch</groupId>
+                    <artifactId>common</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- JUnit 4 测试依赖 -->

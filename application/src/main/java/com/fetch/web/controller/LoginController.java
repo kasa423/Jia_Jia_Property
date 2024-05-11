@@ -38,4 +38,8 @@ public class LoginController {
         return loginService.get().logout();
     }
 
+    @ResponseBody
+    @GetMapping("/hello")
+    public Result<String> hello(){return new Result<>("hello");}
+
 }

@@ -12,9 +12,11 @@
 
     <dependencies>
 
-        <!-- 暂时存放，可能会移植到根目录下 -->
-
-        <!-- end -->
+        <dependency>
+            <groupId>com.fetch</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0.0</version>
+        </dependency>
 
 
     </dependencies>

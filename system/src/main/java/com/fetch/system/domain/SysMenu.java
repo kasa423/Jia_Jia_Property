@@ -1,110 +1,43 @@
 package com.fetch.system.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.*;
+
+import java.util.Date;
+
 /**
  * @author Administrator
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class SysMenu {
 
-    private long menuId;
-    private String menuKey;
-    private String menuPermission;
-    private long parentId;
+    private Integer id;
+
+    private String menuName;
+
     private String path;
+
     private String component;
-    private String deleteFlag;
-    private java.sql.Timestamp createTime;
-    private long createBy;
-    private java.sql.Timestamp updateTime;
 
+    private String permissions;
 
-    public long getMenuId() {
-        return menuId;
-    }
+    private Integer parentId;
 
-    public void setMenuId(long menuId) {
-        this.menuId = menuId;
-    }
+    private String icon;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss" ,timezone = "GMT+8")
+    private Date createTime;
 
-    public String getMenuKey() {
-        return menuKey;
-    }
+    private Integer createBy;
 
-    public void setMenuKey(String menuKey) {
-        this.menuKey = menuKey;
-    }
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss" , timezone = "GMT+8")
+    private Date updateTime;
 
+    private Integer updateBy;
 
-    public String getMenuPermission() {
-        return menuPermission;
-    }
-
-    public void setMenuPermission(String menuPermission) {
-        this.menuPermission = menuPermission;
-    }
-
-
-    public long getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(long parentId) {
-        this.parentId = parentId;
-    }
-
-
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
-
-
-    public String getComponent() {
-        return component;
-    }
-
-    public void setComponent(String component) {
-        this.component = component;
-    }
-
-
-    public String getDeleteFlag() {
-        return deleteFlag;
-    }
-
-    public void setDeleteFlag(String deleteFlag) {
-        this.deleteFlag = deleteFlag;
-    }
-
-
-    public java.sql.Timestamp getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(java.sql.Timestamp createTime) {
-        this.createTime = createTime;
-    }
-
-
-    public long getCreateBy() {
-        return createBy;
-    }
-
-    public void setCreateBy(long createBy) {
-        this.createBy = createBy;
-    }
-
-
-    public java.sql.Timestamp getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(java.sql.Timestamp updateTime) {
-        this.updateTime = updateTime;
-    }
+    private String remark;
 
 }
