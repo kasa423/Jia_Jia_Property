@@ -15,8 +15,8 @@ import java.io.Serializable;
 public class SysUser implements Serializable {
 
     private Long id;
-    private String userName;
-    private String nickName;
+    private String username;
+    private String nickname;
     private String password;
     private String status;
     private String email;

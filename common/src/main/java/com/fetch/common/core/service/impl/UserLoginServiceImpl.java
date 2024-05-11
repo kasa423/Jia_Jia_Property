@@ -41,7 +41,7 @@ public class UserLoginServiceImpl implements IUserLoginService {
     public Result<Object> login(SysUser user) {
         Result<Object> result = new Result<>();
         UsernamePasswordAuthenticationToken authenticationToken =
-                new UsernamePasswordAuthenticationToken(user.getUserName(), user.getPassword());
+                new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
         Authentication authentication;
         try {
             authentication = authenticationManager.authenticate(authenticationToken);

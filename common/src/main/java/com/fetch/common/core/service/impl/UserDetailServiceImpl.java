@@ -21,8 +21,11 @@ import java.util.Objects;
 @Service
 public class UserDetailServiceImpl implements UserDetailsService {
 
-    @Autowired
-    private UserMapper userMapper;
+    private final UserMapper userMapper;
+
+    public UserDetailServiceImpl(UserMapper userMapper) {
+        this.userMapper = userMapper;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
