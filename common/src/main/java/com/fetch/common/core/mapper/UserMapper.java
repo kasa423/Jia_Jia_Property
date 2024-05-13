@@ -19,4 +19,7 @@ public interface UserMapper {
 
     List<String> selectRolePermissionByUserId(Long userId);
 
+    SysUser getUserInfo(Integer userId);
+
+    Integer register(SysUser user);
 }

@@ -96,6 +96,13 @@
             <version>3.5.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.fetch</groupId>
+            <artifactId>system</artifactId>
+            <version>1.0.0</version>
+            <optional>true</optional>
+        </dependency>
+
     </dependencies>
 
 </project>

@@ -16,6 +16,7 @@
             <groupId>com.fetch</groupId>
             <artifactId>common</artifactId>
             <version>1.0.0</version>
+            <optional>true</optional>
         </dependency>
 
 

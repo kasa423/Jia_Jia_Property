@@ -14,7 +14,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class SysUser implements Serializable {
 
-    private Long id;
+    private Integer id;
     private String username;
     private String nickname;
     private String password;

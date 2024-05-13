@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?><!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fetch.system.mapper.SysMenuMapper">
+
+    <sql id="base_menu_column">
+        select menu_name,
+               path,
+               component,
+               permissions,
+               parent_id,
+               icon,
+               create_time,
+               create_by,
+               update_time,
+               update_by,
+               remark
+        from sys_menu
+    </sql>
+    <insert id="saveNewMenu" parameterType="sysMenu" useGeneratedKeys="true" keyProperty="id">
+        insert into sys_menu(menu_name,
+                             path,
+                             component,
+                             visible,
+                             status,
+                             permissions,
+                             parent_id,
+                             icon,
+                             create_by,
+                             create_time,
+                             update_by,
+                             update_time,
+                             delete_flag,
+                             remark)
+            values (
+                   #{menuName},
+                   #{path},
+                   #{component},
+                   0,
+                   0,
+                   #{permissions},
+                   #{parentId},
+                   #{icon},
+                   #{createBy},
+                   current_timestamp,
+                   #{updateBy},
+                   current_timestamp,
+                   0,
+                   #{remark}
+            )
+    </insert>
+
+    <resultMap id="SysMenuModel" type="com.fetch.system.domain.SysMenu">
+        <result column="menu_name" property="menuName"/>
+        <result column="path" property="path"/>
+        <result column="component" property="component"/>
+        <result column="permissions" property="permissions"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="icon" property="icon"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_by" property="createBy"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_by" property="updateBy"/>
+    </resultMap>
+
+
+    <!-- 查询用户菜单 -->
+    <select id="selectMenuByRoleId" resultMap="SysMenuModel" parameterType="integer">
+        <include refid="base_menu_column"/>
+        where id in (select menu_id from sys_role_menu where role_id = #{roleId})
+    </select>
+
+</mapper>

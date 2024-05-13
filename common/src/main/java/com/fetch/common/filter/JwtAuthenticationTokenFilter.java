@@ -1,6 +1,5 @@
 package com.fetch.common.filter;
 
-import com.alibaba.fastjson.parser.ParserConfig;
 import com.fetch.common.constants.RedisKeyConstants;
 import com.fetch.common.core.domain.LoginUser;
 import com.fetch.common.core.redis.RedisCache;
@@ -17,6 +16,8 @@ import javax.servlet.ServletException;
 import java.io.IOException;
 import java.util.Objects;
 
+import static com.fetch.common.constants.Constants.TOKEN_PREFIX;
+
 /**
  * @author jiang chen
  * @ClassName JwtAuthenticationTokenFilter
@@ -32,9 +33,9 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response, javax.servlet.FilterChain filterChain) throws ServletException, IOException {
         // 获取token
-        String authorizationHeader  = request.getHeader("Authorization");
+        String authorizationHeader = request.getHeader("Authorization");
         String token = "";
-        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
+        if (authorizationHeader != null && authorizationHeader.startsWith(TOKEN_PREFIX)) {
             token = authorizationHeader.substring(7); // 去除 "Bearer " 前缀获取令牌
             // 在这里使用令牌进行后续处理
         }

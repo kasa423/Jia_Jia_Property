@@ -19,6 +19,24 @@
             create_time
         from sys_user
     </sql>
+    <insert id="register" keyProperty="id" useGeneratedKeys="true" parameterType="sysUser">
+        insert into sys_user(user_name,
+                             nick_name,
+                             password,
+                             email,
+                             phone_number,
+                             sex,
+                             avatar,
+                             user_type)
+        values (#{username},
+                #{nickName},
+                #{password},
+                #{email},
+                #{phoneNumber},
+                #{sex},
+                #{avatar},
+                #{userType})
+    </insert>
 
     <select id="selectUserByUsername" resultType="com.fetch.common.core.domain.SysUser" parameterType="sysUser">
         <include refid="selectUserVo"/>
@@ -37,6 +55,12 @@
             ur.user_id = #{userId}
           AND r.`status` = 0
           AND m.`status` = 0
+    </select>
+
+    <select id="getUserInfo" resultType="com.fetch.common.core.domain.SysUser">
+        <include refid="selectUserVo"/>
+        where id = #{userId}
+        and del_flag = 0
     </select>
 
 </mapper>
